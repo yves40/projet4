@@ -4,10 +4,7 @@ require_once 'classes/Application.php';
 
 $app = new Application();
 
-$app->router->get( '/', function () {
-  return '/ path called';
-});
-
+$app->router->get( '/', 'home');
 $app->router->get( '/contact', 'contact');
 
 $app->run();
