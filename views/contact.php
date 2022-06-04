@@ -1,6 +1,1 @@
-<?php
-
-
-?>
-
-<h1>Contacts (very complex form) </h1>
+<h1>Contact us </h1>

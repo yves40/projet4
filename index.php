@@ -2,7 +2,7 @@
 
 require_once 'classes/Application.php';
 
-$app = new Application();
+$app = new Application(dirname(__DIR__)."/projet4");
 
 $app->router->get( '/', 'home');
 $app->router->get( '/contact', 'contact');

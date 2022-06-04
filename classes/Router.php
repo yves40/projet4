@@ -29,7 +29,24 @@ class Router {
     return call_user_func($callback);
   }
   public function renderView($view) {
-    include_once __DIR__."/../views/$view.php";
+    $layoutContent = $this->layoutContent();
+    $viewContent = $this->renderOnlyView($view);
+    return str_replace('{{content}}', $viewContent, $layoutContent); // Replace content with $viewContent in $layoutContent
+  }
+  protected function layoutContent() {
+    ob_start();       // use a buffer, does not output anything
+    include_once Application::$ROOT_DIR."/views/layouts/main.php";
+    return ob_get_clean();   // Returns the buffer content and clears it
+  }
+  protected function renderOnlyView($view) {
+    ob_start();       // use a buffer, does not output anything
+    include_once Application::$ROOT_DIR."/views/$view.php";
+    return ob_get_clean();   // Returns the buffer content and clears it
+  }
+  protected function trace($var) {
+    echo "<pre>";
+    var_dump($var);
+    echo "</pre>";    
   }
 }
 /*
