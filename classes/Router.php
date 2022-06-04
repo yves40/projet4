@@ -5,15 +5,17 @@ class Router {
 
   protected array $routes = [];
   protected Request $request;
+  protected Response $response;
 
-  public function __construct($request) {
+  public function __construct($request, $response) {
     $this->request = $request;
+    $this->response = $response;
   }
 
   public function get($path, $callback)
   {
     $this->routes['get'][$path] = $callback;
-  }
+  } 
 
   public function resolve() {
 
@@ -21,6 +23,7 @@ class Router {
     $method = $this->request->getMethod();
     $callback = $this->routes[$method][$path] ?? false;
     if( $callback === false ) {
+      $this->response->setStatusCode(404);
       return 'Not found';
     }
     if(is_string($callback)) {
