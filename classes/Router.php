@@ -36,6 +36,10 @@ class Router {
     if(is_string($callback)) {
       return $this->renderView($callback);
     }
+    if(is_array($callback)) {
+      Application::$app->controller = new $callback[0]();
+      $callback[0] = Application::$app->controller;
+    }
     return call_user_func($callback, $this->request);   // In this case the callback is an array
                                                         // containing a class and a method of that class
                                                         // The second parameter if for the called method
@@ -49,8 +53,9 @@ class Router {
   }
   //-----------------------------------------------------------------------------
   protected function layoutContent() {
+    $layout = Application::$app->controller->layout;
     ob_start();       // use a buffer, does not output anything
-    include_once Application::$ROOT_DIR."/views/layouts/main.php";
+    include_once Application::$ROOT_DIR."/views/layouts/$layout.php";
     return ob_get_clean();   // Returns the buffer content and clears it
   }
   //-----------------------------------------------------------------------------
