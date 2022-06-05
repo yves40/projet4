@@ -36,14 +36,14 @@ class Router {
     if(is_string($callback)) {
       return $this->renderView($callback);
     }
-    if(is_array($callback)) {
+    if(is_array($callback)) {     // In this case the callback is an array
+                                  // containing a class and a method of that class
+                                  // The second parameter if for the called method
+                                  // to have an access top the request object if needed
       Application::$app->controller = new $callback[0]();
       $callback[0] = Application::$app->controller;
     }
-    return call_user_func($callback, $this->request);   // In this case the callback is an array
-                                                        // containing a class and a method of that class
-                                                        // The second parameter if for the called method
-                                                        // to have an access top the request object if needed
+    return call_user_func($callback, $this->request);   
   }
   //-----------------------------------------------------------------------------
   public function renderView($view, $params = []) {
