@@ -15,7 +15,9 @@ class SiteController extends Controller {
     return $this->render('home', $params);
   }
 
-  public function handleContact() {
+  public function handleContact(Request $request) {
+    $body = $request->getBody();
+    Application::$app->trace($body);
     return 'handle contact form submission';
   }
 

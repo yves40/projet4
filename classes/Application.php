@@ -25,4 +25,11 @@ class Application {
     echo $this->router->resolve();
   }
 
+  //-----------------------------------------------------------------------------
+  public function trace($var) {
+    echo "<pre>";
+    var_dump($var);
+    echo "</pre>";    
+  }  
+
 }

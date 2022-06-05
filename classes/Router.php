@@ -27,7 +27,7 @@ class Router {
   public function resolve() {
 
     $path = $this->request->getPath();
-    $method = $this->request->getMethod();
+    $method = $this->request->method();
     $callback = $this->routes[$method][$path] ?? false;
     if( $callback === false ) {
       $this->response->setStatusCode(404);
@@ -36,8 +36,10 @@ class Router {
     if(is_string($callback)) {
       return $this->renderView($callback);
     }
-    return call_user_func($callback);   // In this case the callback is an array
-                                        // containing a class and a method of that class
+    return call_user_func($callback, $this->request);   // In this case the callback is an array
+                                                        // containing a class and a method of that class
+                                                        // The second parameter if for the called method
+                                                        // to have an access top the request object if needed
   }
   //-----------------------------------------------------------------------------
   public function renderView($view, $params = []) {
