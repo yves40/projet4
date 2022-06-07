@@ -4,11 +4,12 @@ require_once 'classes/Application.php';
 require_once 'controllers/siteController.php';
 require_once 'controllers/AuthController.php';
 
-$app = new Application(dirname(__DIR__)."/projet4");
+$app = new Application();
 $sitecontroller = new SiteController();
 $AuthController = new AuthController();
 
 $app->router->get( '/', [$sitecontroller, 'home']);
+
 $app->router->get( '/contact', [$sitecontroller, 'contact']);
 $app->router->post( '/contact', [$sitecontroller, 'handleContact']);
 

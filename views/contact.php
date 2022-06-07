@@ -1,7 +1,7 @@
 <?php
 ?>
 
-<h1>Contact us </h1>
+<h3 class="generalmessage">Contact us </h3>
 
 
 <form action="" method="post">

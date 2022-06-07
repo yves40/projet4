@@ -7,6 +7,14 @@
     <title>PHP MVC DEMO</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <p class="version">auth layout Jun 07 2022, 1.08</p>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          </ul>
+    </nav>
 
     <div class="container">
       {{content}}

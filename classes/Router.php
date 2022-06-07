@@ -24,12 +24,16 @@ class Router {
   } 
 
   //-----------------------------------------------------------------------------
+  public function getRoutes() {
+    return $this->routes;
+  }
+  //-----------------------------------------------------------------------------
   public function resolve() {
-
     $path = $this->request->getPath();
     $method = $this->request->method();
     $callback = $this->routes[$method][$path] ?? false;
     if( $callback === false ) {
+      Application::$app->trace($path, 'resolve()', 'Path not found: '.$path);
       $this->response->setStatusCode(404);
       return $this->renderView('_404');
     }
@@ -67,10 +71,5 @@ class Router {
     include_once Application::$ROOT_DIR."/views/$view.php";
     return ob_get_clean();   // Returns the buffer content and clears it
   }
-  //-----------------------------------------------------------------------------
-  protected function trace($var) {
-    echo "<pre>";
-    var_dump($var);
-    echo "</pre>";    
-  }
+
 }
