@@ -4,7 +4,8 @@ h1 {
 }
 .version {
   font-size: .8rem;
-  opacity: .6;
+  opacity: .7;
+  font-style: italic;
 }
 .container {
   font-size: 1rem;
@@ -15,7 +16,6 @@ h1 {
   text-align: center;
 }
 form {
-  text-align: center;
   margin-left: 10rem;
   margin-right: 10rem;
   border: 1px black solid;
