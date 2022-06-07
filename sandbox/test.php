@@ -17,6 +17,21 @@
             echo "<p>baboule est INCROYABLE !!!!!</p>";
         }
         echo "<br/>";
+        $list = [ "One", "two", "three", "four", "five" ];
+        echo count($list);
+        echo "<br/>";
+        foreach($list as $key => $value) {
+            echo $value."/".$value;
+            echo "<br/>";
+        }
+        $list2 = array("Key1" =>"One", 
+            "Key2" => "Two",
+            "Key3" => "Three",
+        );
+        foreach($list2 as $key => $value) {
+            echo $key."/".$value;
+            echo "<br/>";
+        }
     ?>
     
 </body>
