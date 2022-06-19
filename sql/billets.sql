@@ -1,5 +1,8 @@
 use yves;
+
+set transaction read write;
 delete from yves.billets;
+
 insert into yves.billets (thetext, user_id, pub_date)
   values( 'Chapter 1, Who killed jessica harper ?', 6,
     STR_TO_DATE('Jun 11 2022 20:37:00','%M %d %Y %H:%i:%s'));
@@ -16,6 +19,7 @@ insert into yves.billets (thetext, user_id, pub_date)
   values( 'Chapter 5, Why did you sell highways to private companies !', 6,
     STR_TO_DATE('Jun 19 2022 11:15:00','%M %d %Y %H:%i:%s'));
 
+commit;
 --
 --  Some check queries
 --
