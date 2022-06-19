@@ -1,4 +1,7 @@
 use yves;
+
+set transaction read write;
+
 delete from yves.users;
 insert into yves.users (email, pwd, pseudo, userstatus, userrole)
   values( 'y@free.fr', 'manager112','y77', 'ACTIVE', 'READER');
@@ -12,6 +15,8 @@ insert into yves.users (email, pwd, pseudo, userstatus, userrole)
   values( 'barbul@free.fr', 'manager112','barbul77', 'ACTIVE', 'READER');
 insert into yves.users (email, pwd, pseudo, userstatus, userrole)
   values( 'tono@free.fr', 'manager112','tono77', 'ACTIVE', 'AUTHOR');
+
+commit;
 --
 --
 --

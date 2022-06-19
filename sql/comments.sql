@@ -1,5 +1,18 @@
 use yves;
+
+set autocommit = 0;   -- No automatic transaction management
+
+set transaction read write;
 delete from yves.comments;
+rollback;
+select count(*) from yves.comments;
+
+set transaction read write;
+delete from yves.comments;
+commit;
+select count(*) from yves.comments;
+
+set transaction read write;
 insert into yves.comments (thetext, user_id, billet_id, pub_date, likeit, dontlikeit)
   values( 'The chapter 1 is real bullshit !', 1,57,
     STR_TO_DATE('Jun 19 2022 12:00:00','%M %d %Y %H:%i:%s'),
@@ -28,7 +41,7 @@ insert into yves.comments (thetext, user_id, billet_id, pub_date, likeit, dontli
   values( 'pas lu le 2, mais le chapitre 3 ext extra...', 5,58,
     STR_TO_DATE('Jun 19 2022 12:15:00','%M %d %Y %H:%i:%s'),
     0, 0);
-
+commit;
 --
 --  Some check queries
 --
