@@ -12,14 +12,18 @@ insert into yves.billets (thetext, user_id, pub_date)
 insert into yves.billets (thetext, user_id, pub_date)
   values( 'Chapter 4, Melanchon is the best !', 6,
     STR_TO_DATE('Jun 19 2022 10:55:00','%M %d %Y %H:%i:%s'));
+insert into yves.billets (thetext, user_id, pub_date)
+  values( 'Chapter 5, Why did you sell highways to private companies !', 6,
+    STR_TO_DATE('Jun 19 2022 11:15:00','%M %d %Y %H:%i:%s'));
 
 --
 --  Some check queries
 --
-select thetext 'Title', 
+select billets.id, thetext 'Title', 
       date_format(pub_date, '%M %d %Y --- %H:%i:%s') 'Published',
       pseudo 'Pseudo',
       email 'mail'
-      from yves.billets, yves.users where users.id = user_id order by email;
+  from yves.billets, yves.users where users.id = user_id
+      order by 2 desc;
 
 
